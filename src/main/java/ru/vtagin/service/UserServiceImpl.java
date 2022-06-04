@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-@Transactional
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -50,11 +49,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void save(User user) {
         userDAO.save(passwordCoder(user));
     }
 
     @Override
+    @Transactional
     public void update(User user) {
         userDAO.save(user);
     }
@@ -77,8 +78,8 @@ public class UserServiceImpl implements UserService {
         Set<Role> roles2 = new HashSet<>();
         roles2.add(roleDAO.findById(1L).orElse(null));
         roles2.add(roleDAO.findById(2L).orElse(null));
-        User user1 = new User("Steve","Jobs",(byte) 25, "user@mail.com", "user","12345",roles1);
-        User user2 = new User("Garry","Potter",(byte) 30, "admin@mail.com", "admin","admin",roles2);
+        User user1 = new User("Dmitry","Vtagin",(byte) 32, "user@mail.com", "user","12345",roles1);
+        User user2 = new User("Nika","Vtagina",(byte) 30, "admin@mail.com", "admin","admin",roles2);
         save(user1);
         save(user2);
     }

@@ -1,4 +1,4 @@
-package ru.vtagin.security;
+package ru.vtagin.configuration.security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -10,7 +10,6 @@ import java.io.IOException;
 
 @Component
 public class SuccessUserHandler implements AuthenticationSuccessHandler {
-    // Spring Security использует объект Authentication, пользователя авторизованной сессии.
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest,
                                         HttpServletResponse httpServletResponse,

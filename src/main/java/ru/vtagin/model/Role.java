@@ -1,8 +1,8 @@
 package ru.vtagin.model;
 
 import org.springframework.security.core.GrantedAuthority;
-
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "role")
@@ -14,11 +14,15 @@ public class Role implements GrantedAuthority {
     @Column(name = "role")
     private String role;
 
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER, cascade = {CascadeType.DETACH})
+    private Set<User> users;
+
     public Role() {
     }
 
-    public Role(Long id) {
+    public Role(Long id, Set<User> users) {
         this.id = id;
+        this.users = users;
     }
 
     public Role(String role) {
@@ -39,6 +43,14 @@ public class Role implements GrantedAuthority {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
     @Override
