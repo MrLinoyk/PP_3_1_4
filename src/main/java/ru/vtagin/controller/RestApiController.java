@@ -20,11 +20,10 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api")
 public class RestApiController {
-
     private final UserService userService;
 
     @Autowired
-    public RestApiController(RoleService roleService, UserService userService) {
+    public RestApiController(UserService userService) {
         this.userService = userService;
     }
 
@@ -66,9 +65,7 @@ public class RestApiController {
     }
 
     @PutMapping("/users/{id}")
-    public ResponseEntity<ExceptionInfo> pageEdit(@PathVariable("id") long id,
-                                                  @Valid @RequestBody User user,
-                                                  BindingResult bindingResult) {
+    public ResponseEntity<ExceptionInfo> pageEdit(@PathVariable("id") long id, @Valid @RequestBody User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             String error = getErrorsFromBindingResult(bindingResult);
             return new ResponseEntity<>(new ExceptionInfo(error), HttpStatus.BAD_REQUEST);

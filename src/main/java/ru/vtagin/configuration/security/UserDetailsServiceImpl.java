@@ -11,8 +11,7 @@ import ru.vtagin.DAO.UserDAO;
 @Transactional
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-
-    UserDAO userDAO;
+    private final UserDAO userDAO;
 
     @Autowired
     public UserDetailsServiceImpl(UserDAO userDAO) {

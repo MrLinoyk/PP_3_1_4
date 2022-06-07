@@ -5,7 +5,6 @@ import ru.vtagin.model.User;
 import java.util.List;
 
 public interface UserService {
-
     List<User> findAll ();
     User getById(long id);
     void save(User user);

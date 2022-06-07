@@ -12,7 +12,6 @@ import java.util.Set;
 
 @Service
 public class RoleServiceImpl implements RoleService{
-
     private final RoleDAO roleDAO;
 
     @Autowired

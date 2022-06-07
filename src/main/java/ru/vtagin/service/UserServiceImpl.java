@@ -16,7 +16,6 @@ import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
-
     private final UserDAO userDAO;
     private final RoleDAO roleDAO;
     private final PasswordEncoder passwordEncoder;

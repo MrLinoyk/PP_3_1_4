@@ -42,10 +42,8 @@ public class User implements UserDetails {
     private String password;
 
     @NotEmpty(message = "The role cannot be omitted")
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "users_roles",
-            joinColumns = @JoinColumn(name = "userId"),
-            inverseJoinColumns = @JoinColumn(name = "roleId"))
+    @ManyToMany
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "userId"),inverseJoinColumns = @JoinColumn(name = "roleId"))
     private Set<Role> roles;
 
     public User() {
